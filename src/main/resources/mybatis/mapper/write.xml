@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.myex.write.dao.IWriteDAO">
+	<insert id="AWrite"
+		parameterType="com.exercise.myex.write.vo.WriteVO">
+		INSERT INTO ex_history(USER_ID,
+		EX_CODE,
+		EX_DATE,
+		AE_WEIGHT,
+		REP)
+		VALUES(#{userId}
+		,#{exCode}
+		,#{exDate}
+		,#{Weight}
+		,#{rep})
+	</insert>
+	<insert id="BWrite"
+		parameterType="com.exercise.myex.write.vo.WriteVO">
+		INSERT INTO ex_history(USER_ID,
+			EX_DATE,
+			EX_CODE,
+			CE_KM,
+			CE_HOUR,
+			CE_MINT)
+		VALUES(
+			#{userId}
+			,#{exDate}
+			,#{exCode}
+			,#{ceKm}
+			,#{ceHour}
+			,#{ceMint})
+	</insert>
+	<select id="getExTypeList"
+		resultType="com.exercise.myex.write.vo.WriteVO" parameterType="String">
+		SELECT EX_CODE, EX_TITLE
+		FROM exercise
+		WHERE ex_pcode = 'S'
+
+	</select>
+
+	<select id="getExTitleList"
+		resultType="com.exercise.myex.write.vo.WriteVO" parameterType="String">
+		SELECT EX_CODE, EX_TITLE
+		FROM exercise
+		WHERE ex_pcode = #{exCode}
+
+	</select>
+	<select id="getExNameList"
+		resultType="com.exercise.myex.write.vo.WriteVO" parameterType="String">
+		SELECT EX_CODE, EX_TITLE
+		FROM exercise
+		WHERE ex_pcode = #{exCode}
+
+	</select>
+
+
+	<insert id="wirteSbd"
+		parameterType="com.exercise.myex.write.vo.WriteVO">
+		INSERT INTO t_sbd (
+		USER_ID,
+		SQUAT,
+		BENCHPRESS,
+		DEADLIFT)
+		VALUES (
+		#{userId},
+		#{squat},
+		#{benchpress},
+		#{deadlift})
+	</insert>
+	<insert id="wirteUbody"
+		parameterType="com.exercise.myex.write.vo.WriteVO">
+		INSERT INTO u_body(
+		BUSER_ID,
+		U_HEIGHT,
+		U_WEIGHT,
+		U_MUS,
+		U_FAT,
+		U_BMI,
+		UPDATE_DT
+		)
+		VALUES (
+		#{userId},
+		#{uHeight},
+		#{uWeight},
+		#{uMus},
+		#{uFat},
+		#{uBmi},
+		#{updateDt}
+		)
+	</insert>
+</mapper>

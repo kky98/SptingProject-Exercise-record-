@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.myex.display.dao.IChartDAO">
+	<select id="getChartItem"
+		resultType="com.exercise.myex.display.vo.GraphVO">
+		SELECT BUSER_ID,
+		U_WEIGHT,
+		U_MUS,
+		U_FAT,
+		U_BMI,
+		UPDATE_DT
+		FROM
+		u_body
+		WHERE BUSER_ID=#{userId}
+		ORDER BY UPDATE_DT
+	</select>
+	<select id="getSbdChartItem"
+		resultType="com.exercise.myex.display.vo.GraphVO">
+		SELECT USER_ID,SQUAT,BENCHPRESS,DEADLIFT,UPDATE_DT
+		FROM
+		T_SBD
+		WHERE USER_ID= #{userId}
+		ORDER BY UPDATE_DT
+	</select>
+	<select id="getCalItem"
+		resultType="com.exercise.myex.write.vo.WriteVO">
+		SELECT 
+		( select ex_title
+        from exercise c
+        where a.EX_CODE=b.ex_code and b.ex_pcode = c.ex_code ) as ex_title
+		,b.ex_pcode as ex_code
+		,b.ex_title as ex_name
+		,a.CE_MINT as ce_mint
+		,a.CE_HOUR as ce_hour
+		,a.CE_KM as CE_KM
+		,a.REP as REP
+		,a.AE_WEIGHT as WEIGHT
+		,a.USER_ID as USER_ID
+		,a.EX_DATE as EX_DATE
+		FROM ex_history a , exercise b 
+		WHERE a.EX_CODE=b.ex_code
+		AND a.user_id=#{userId}
+		ORDER BY a.EX_DATE
+	</select>
+</mapper>

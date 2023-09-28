@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.myex.user.dao.IUserDAO">
+<insert id="registUser" parameterType="com.exercise.myex.user.vo.UserVO">
+	INSERT INTO  t_user (
+			user_id 
+			,user_pw 
+			,user_nm 
+			,user_nickname 
+			,user_sex 
+			,user_age )
+	VALUES(
+	  		#{userId}
+			,#{userPw}
+			,#{userNm}
+			,#{userNic}
+			,#{userSex}
+			,#{userAge}
+			
+	)
+</insert>
+<select id="loginUser" parameterType="UserVO" resultType="UserVO">
+	SELECT user_id, user_pw ,USER_NM, user_nickname as user_nic
+	FROM t_user 
+	WHERE user_id = #{userId} 
+</select>
+</mapper>
