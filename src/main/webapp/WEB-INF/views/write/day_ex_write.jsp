@@ -147,7 +147,7 @@
 	    } else if (selectedType === "B") {
 	        $("#divExerciseKm").show("slow");
 	        $("#divExerciseTime").show("slow");
-	        $("#divexerciseName").hide("slow");
+	        $("#divExerciseName").hide("slow");
 	        $("#divExerciseTitle").show("slow");
 	        
 	        $("#divExerciseWeight").hide("slow");

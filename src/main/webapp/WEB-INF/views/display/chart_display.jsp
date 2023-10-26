@@ -138,7 +138,7 @@
 					options: {
 				        title: {
 				            display: true,
-				            text: '당신의 몸 변화'
+				            text: '3대 운동 변화'
 				        },
 				        scales: {
 				            y: {
