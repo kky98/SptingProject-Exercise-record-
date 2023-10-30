@@ -16,18 +16,26 @@
 	<%@ include file="/WEB-INF/inc/header.jsp"%>
 	<!-- 헤더 -->
 	<!--본문-->
-	<div class="container mt-5">
-		<h1>음식영양정보</h1>
-		<p>먹은 이미지를 업로드 해보세요 </p>
+	<div class="container mt-5" style="text-align: center;">
 		
+		
+		<div style="text-align : center;">
+		<h1>음식영양정보</h1>
+		<img src="${pageContext.request.contextPath}/assets/img/qqq.png"
+						alt="" class="img-fluid" width="300" height="300">
+						<p>먹은 이미지를 업로드 해보세요 </p>
+						
+						<div style="text-align : center;">
 				<form id="uploadForm" enctype="multipart/form-data">
         <input type="file" name="image" onchange="previewImage(this)">
         <input type="button" value="영양소 분석" onclick="uploadImage()">
-    </form><br>
+    </form>
     <img id="preview" width="299" height="299" style="display:none;">
     <h2 id="prediction"></h2>
 
     <div id="foodInfo"></div>
+	</div>
+	</div>
 	</div>
  <script>
         function previewImage(input){
@@ -42,7 +50,7 @@
          let formData = new FormData($("#uploadForm")[0]);
          $.ajax({
         	    type: "POST",
-        	    url: "http://localhost:5000/upload", // 로컬 호스트 및 포트로 요청 보내기
+        	    url: "http://192.168.0.19:5000/upload", // 로컬 호스트 및 포트로 요청 보내기
         	    data: formData,
         	    cache:false,
         	    contentType: false,
