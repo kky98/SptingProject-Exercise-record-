@@ -50,7 +50,7 @@
          let formData = new FormData($("#uploadForm")[0]);
          $.ajax({
         	    type: "POST",
-        	    url: "http://192.168.0.19:5000/upload", // 로컬 호스트 및 포트로 요청 보내기
+        	    url: "http://ip:5000/upload", // 로컬 호스트 및 포트로 요청 보내기
         	    data: formData,
         	    cache:false,
         	    contentType: false,
